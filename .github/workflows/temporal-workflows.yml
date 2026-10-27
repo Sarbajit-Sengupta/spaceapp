@@ -1,0 +1,44 @@
+name: Temporal workflow sandbox
+
+on:
+  pull_request:
+    paths:
+      - 'apps/worker/**'
+      - 'packages/contracts/**'
+      - 'packages/runtime/**'
+      - 'packages/memory-graph/**'
+      - 'package-lock.json'
+      - '.github/workflows/temporal-workflows.yml'
+  push:
+    branches: [main, 'test/temporal-sandbox-replay']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sandbox-and-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Build workflow and persisted-fixture dependencies
+        run: npm run build -w @space/contracts && npm run build -w @space/memory-graph
+      - name: Real sandbox, recorded replay and negative determinism control
+        working-directory: apps/worker
+        run: |
+          start=$SECONDS
+          npm test -- tests/temporal-sandbox.test.ts
+          elapsed=$((SECONDS - start))
+          echo "Temporal workflow suite completed in ${elapsed}s"
+          test "$elapsed" -lt 180
