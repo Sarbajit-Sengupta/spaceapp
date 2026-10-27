@@ -201,7 +201,7 @@ async function start(loc) {
     supervise("cli-host", process.execPath, ["packages/cli-host/dist/main.js"]);
     supervise("worker", process.execPath, ["apps/worker/dist/worker.js"]);
     supervise("api", process.execPath, ["node_modules/tsx/dist/cli.mjs", "watch", "apps/api/src/server.ts"]);
-    supervise("web", process.execPath, ["node_modules/vite/bin/vite.js", "--host", "127.0.0.1", "--port", String(config.ports.web), "--strictPort"], join(loc.root, "apps/web"));
+    supervise("web", process.execPath, [join(loc.root, "node_modules/vite/bin/vite.js"), "--host", "127.0.0.1", "--port", String(config.ports.web), "--strictPort"], join(loc.root, "apps/web"));
     await waitForReady(`http://127.0.0.1:${config.ports.api}/readyz`, { signal: controller.signal });
     log(`Ready: http://127.0.0.1:${config.ports.web}`);
     log(`One-time owner setup token (valid for 15 minutes): ${secrets.setup}`);
@@ -213,6 +213,10 @@ async function start(loc) {
     controller.abort();
     await stopChildren(children);
     await Promise.all(logWrites);
+    if (failure) {
+      log("Container startup diagnostics (development secrets redacted):");
+      await run("docker", ["compose", "--project-name", loc.project, "--file", join(loc.state, "compose.json"), "logs", "--no-color", "--tail", "40"], { env }).catch(() => {});
+    }
     if (server) await new Promise(resolve => server.close(resolve));
     await compose(loc, "down", "--remove-orphans").catch(error => { failure ||= error; });
     await rm(join(loc.state, "run-lock"), { recursive: true, force: true });

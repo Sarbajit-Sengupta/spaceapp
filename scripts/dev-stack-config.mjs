@@ -38,10 +38,13 @@ export function composeDocument(config, images) {
       },
       temporal: {
         image: images.temporal,
+        // Compose file-backed secrets retain their host uid/mode on Linux. Read
+        // the 0600 secret as root, then drop to the image's temporal user.
+        user: "0:0",
         depends_on: { postgres: { condition: "service_healthy" } },
         environment: { DB: "postgres12", DB_PORT: "5432", POSTGRES_USER: "spaceapp", POSTGRES_SEEDS: "postgres", DYNAMIC_CONFIG_FILE_PATH: "config/dynamicconfig/docker.yaml" },
         entrypoint: ["/bin/sh", "-ec"],
-        command: ['export POSTGRES_PWD="$$(cat /run/secrets/postgres-password)"; exec /etc/temporal/entrypoint.sh autosetup'],
+        command: ['export POSTGRES_PWD="$$(cat /run/secrets/postgres-password)"; exec su -p -s /bin/sh temporal -c "exec /etc/temporal/entrypoint.sh autosetup"'],
         secrets: ["postgres-password"], ports: [`127.0.0.1:${config.ports.temporal}:7233`],
         healthcheck: { test: ["CMD-SHELL", "temporal operator cluster health --address temporal:7233 >/dev/null && temporal operator namespace describe --namespace default --address temporal:7233 >/dev/null"], interval: "3s", timeout: "10s", retries: 60 }
       }
