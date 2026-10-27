@@ -52,3 +52,6 @@ projects/
 .local/
 
 run-spaceapp-*.tgz
+
+# Isolated contributor stack: private credentials, tools, sockets and runtime data.
+/.dev-stack/

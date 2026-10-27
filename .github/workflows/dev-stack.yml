@@ -1,0 +1,52 @@
+name: Contributor source stack
+
+on:
+  push:
+    paths:
+      - "scripts/dev-stack*.mjs"
+      - "scripts/tests/dev-stack.test.mjs"
+      - "apps/**"
+      - "packages/**"
+      - "package*.json"
+      - "Dockerfile"
+      - ".github/workflows/dev-stack.yml"
+  pull_request:
+    paths:
+      - "scripts/dev-stack*.mjs"
+      - "scripts/tests/dev-stack.test.mjs"
+      - "apps/**"
+      - "packages/**"
+      - "package*.json"
+      - "Dockerfile"
+      - ".github/workflows/dev-stack.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dev-stack-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-stack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Contributor stack unit tests
+        run: npm run test:dev-stack
+      - name: Real database, Temporal, owner setup, OpenCode pane and cleanup
+        run: npm run smoke:dev-stack
+      - name: Stop owned stack if the smoke was interrupted
+        if: always()
+        run: npm run dev:stack -- reset

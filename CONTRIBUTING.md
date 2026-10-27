@@ -27,6 +27,69 @@ packaging requires its normal toolchain and separate platform acceptance.
 Dependency installation may use the network; the smoke command below does not
 need a provider account, API key, Docker, PostgreSQL or Temporal.
 
+## Run the full app from source
+
+Use Node 22 (`.nvmrc`), npm, Docker Engine with Compose v2, and the native
+build prerequisites above. On macOS use Docker Desktop or Colima with the
+Docker CLI and Compose plugin. On Windows 11 use WSL2, with Node and Docker
+available **inside the distribution** (Docker Desktop's WSL integration also
+works). Keep the checkout on the Linux filesystem at a short path such as
+`~/src/spaceapp`; Unix socket paths are limited. Native Windows is not supported
+by this Unix PTY development command.
+
+After `ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm ci`:
+
+```sh
+npm run dev:stack
+# Open the printed loopback URL, enter its one-time token, create your owner,
+# then open Getting Started's OpenCode terminal. No provider account is needed.
+npm run dev:stack -- down       # another terminal: stop; retain development data
+npm run dev:stack -- rebuild    # rebuild packages/* and worker; restart the stack
+npm run dev:stack -- reset      # stop; remove only this checkout's owned state
+```
+
+The foreground supervisor downloads the same digest-pinned pgvector PostgreSQL
+and Temporal images as the launcher, builds the repository, applies migrations,
+installs the Dockerfile's pinned OpenCode version locally, and starts the CLI
+host, worker, API watcher and Vite. It waits for `/readyz` with workflows enabled
+before printing the URL and setup token. The normal owner setup and password
+sign-in apply; `SPACE_DEV_LOGIN` is always false. API edits restart its watcher;
+web edits use Vite hot reload. For `packages/*` or worker edits, the one `rebuild`
+command above rebuilds their output and restarts its consumers.
+
+Each checkout uses its own hashed Compose project, development database and
+Temporal namespace/task queue, named volume, and git-ignored `.dev-stack/`.
+Secrets are random per state directory, mode 0600 beneath a mode-0700 directory.
+Runtime processes do not inherit provider keys or installed-instance settings.
+Only OpenCode is included; other provider wrappers explain that they are disabled.
+The Browser Host and optional companions remain disabled in the app. This stack
+proves the OpenCode UI, not an authenticated provider request or free-model availability.
+
+Every listener binds to `127.0.0.1`. Defaults: API 14910, web 14911, PostgreSQL
+15432, Temporal 17233, OpenCode server 17047. Before the first run, override them
+with `SPACE_DEV_API_PORT`, `SPACE_DEV_WEB_PORT`, `SPACE_DEV_POSTGRES_PORT`,
+`SPACE_DEV_TEMPORAL_PORT`, `SPACE_DEV_OPENCODE_PORT`. Ports are retained with the
+state; reset before choosing new ones. Installed-app ports 4910/4911 and duplicate
+or privileged ports are refused. `SPACE_API_ORIGIN` tells Vite where to proxy the
+development API while retaining the existing default for other dev commands.
+
+If Docker is unavailable, check `docker info` and `docker compose version` inside
+the same shell. The first run needs network access to pull images, install the
+pinned CLI, and fetch build dependencies; later runs reuse them. Readiness errors
+or a supervised process exit stop the whole stack with a named error. Bounded,
+redacted process output is saved in `.dev-stack/logs/` on shutdown. Ctrl+C and
+`down` stop source processes and containers; `reset` also removes the owned volume
+and directory. Neither command targets installed-app projects, user provider homes
+or arbitrary paths. A foreign or symlinked `.dev-stack` is refused.
+
+`npm run test:dev-stack` checks isolation and configuration without Docker.
+`npm run smoke:dev-stack` requires a fresh state directory and performs real
+PostgreSQL/Temporal readiness, owner setup and sign-in, Getting Started/OpenCode
+PTY and WebSocket rendering, worker-failure shutdown, then reset and container,
+volume, process and listener cleanup checks. It never resets an existing state
+directory. The `Contributor source stack` workflow runs that proof on Linux
+without a TTY or provider credentials.
+
 ## First executed task, without a provider
 
 ```sh
