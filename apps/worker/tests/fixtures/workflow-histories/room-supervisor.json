@@ -1,0 +1,673 @@
+{
+  "events": [
+    {
+      "eventId": "1",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 303000000
+      },
+      "eventType": 1,
+      "workflowExecutionStartedEventAttributes": {
+        "workflowType": {
+          "name": "roomAgentSupervisorWorkflow"
+        },
+        "taskQueue": {
+          "name": "sandbox-main",
+          "kind": 1
+        },
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJyb29tSWQiOiJyb29tOnN5bnRoZXRpYyIsInBlbmRpbmciOltdLCJtb25pdG9yaW5nTWlzc2lvbklkcyI6W10sImludGVycnVwdGVkIjpbXSwicHJvY2Vzc2VkQ291bnQiOjB9"
+            }
+          ]
+        },
+        "workflowExecutionTimeout": {
+          "seconds": "315360000"
+        },
+        "workflowRunTimeout": {
+          "seconds": "315360000"
+        },
+        "workflowTaskTimeout": {
+          "seconds": "10"
+        },
+        "originalExecutionRunId": "542b6ef2-c334-41bd-979d-2ddfad113c41",
+        "identity": "synthetic-worker",
+        "firstExecutionRunId": "542b6ef2-c334-41bd-979d-2ddfad113c41",
+        "attempt": 1,
+        "firstWorkflowTaskBackoff": {},
+        "header": {}
+      }
+    },
+    {
+      "eventId": "2",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 303000000
+      },
+      "eventType": 5,
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "sandbox-main",
+          "kind": 1
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "3",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 303000000
+      },
+      "eventType": 6,
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "2",
+        "identity": "synthetic-worker",
+        "historySizeBytes": "369"
+      }
+    },
+    {
+      "eventId": "4",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 480000000
+      },
+      "eventType": 7,
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "2",
+        "identity": "synthetic-worker",
+        "binaryChecksum": "@temporalio/worker@1.24.0+ce48a8a55549c56b2d0e999ceca2be5976d7b55c2fd861ce4eff20cd6ae42cb3",
+        "sdkMetadata": {
+          "coreUsedFlags": [
+            2,
+            1,
+            3
+          ],
+          "sdkName": "temporal-typescript",
+          "sdkVersion": "1.24.0"
+        },
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "5",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 480000000
+      },
+      "eventType": 25,
+      "markerRecordedEventAttributes": {
+        "markerName": "core_patch",
+        "details": {
+          "patch-data": {
+            "payloads": [
+              {
+                "metadata": {
+                  "encoding": "anNvbi9wbGFpbg=="
+                },
+                "data": "eyJpZCI6InJvb20tYmFja2dyb3VuZC1jb250aW51YXRpb24tdjEiLCJkZXByZWNhdGVkIjpmYWxzZX0="
+              }
+            ]
+          }
+        },
+        "workflowTaskCompletedEventId": "3"
+      }
+    },
+    {
+      "eventId": "6",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 480000000
+      },
+      "eventType": 40,
+      "upsertWorkflowSearchAttributesEventAttributes": {
+        "workflowTaskCompletedEventId": "3",
+        "searchAttributes": {
+          "indexedFields": {
+            "TemporalChangeVersion": {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg==",
+                "type": "S2V5d29yZExpc3Q="
+              },
+              "data": "WyJyb29tLWJhY2tncm91bmQtY29udGludWF0aW9uLXYxIl0="
+            }
+          }
+        }
+      }
+    },
+    {
+      "eventId": "7",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 480000000
+      },
+      "eventType": 26,
+      "workflowExecutionSignaledEventAttributes": {
+        "signalName": "enqueueRoomAgentMission",
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJtaXNzaW9uSWQiOiJtaXNzaW9uOnNpZ25hbCIsInR1cm4iOnsicm9vbUlkIjoicm9vbTpzeW50aGV0aWMiLCJwYW5lSWQiOiJwYW5lOnN5bnRoZXRpYyIsInByb21wdCI6IlN5bnRoZXRpYyByZXF1ZXN0IiwiYXJ0aWZhY3RJZHMiOltdLCJhZ2VudFJ1bklkIjoiYWdlbnRfcnVuOnNpZ25hbCIsInBlcm1pc3Npb25Nb2RlIjpudWxsLCJjb2xsYWJvcmF0aW9uTW9kZSI6ImRlZmF1bHQiLCJ0cmFjZUlkIjoidHJhY2U6c2lnbmFsIn19"
+            }
+          ]
+        },
+        "identity": "synthetic-worker",
+        "header": {}
+      }
+    },
+    {
+      "eventId": "8",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 480000000
+      },
+      "eventType": 5,
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "sandbox-main",
+          "kind": 1
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 2
+      }
+    },
+    {
+      "eventId": "9",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 480000000
+      },
+      "eventType": 6,
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "8",
+        "identity": "synthetic-worker",
+        "historySizeBytes": "1236"
+      }
+    },
+    {
+      "eventId": "10",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 487000000
+      },
+      "eventType": 7,
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "8",
+        "identity": "synthetic-worker",
+        "binaryChecksum": "@temporalio/worker@1.24.0+ce48a8a55549c56b2d0e999ceca2be5976d7b55c2fd861ce4eff20cd6ae42cb3",
+        "sdkMetadata": {
+          "langUsedFlags": [
+            2
+          ]
+        },
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "11",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 487000000
+      },
+      "eventType": 10,
+      "activityTaskScheduledEventAttributes": {
+        "activityId": "1",
+        "activityType": {
+          "name": "checkRoomAgentSupervisorTurn"
+        },
+        "taskQueue": {
+          "name": "sandbox-main",
+          "kind": 1
+        },
+        "header": {},
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJtaXNzaW9uSWQiOiJtaXNzaW9uOnNpZ25hbCIsInR1cm4iOnsicm9vbUlkIjoicm9vbTpzeW50aGV0aWMiLCJwYW5lSWQiOiJwYW5lOnN5bnRoZXRpYyIsInByb21wdCI6IlN5bnRoZXRpYyByZXF1ZXN0IiwiYXJ0aWZhY3RJZHMiOltdLCJhZ2VudFJ1bklkIjoiYWdlbnRfcnVuOnNpZ25hbCIsInBlcm1pc3Npb25Nb2RlIjpudWxsLCJjb2xsYWJvcmF0aW9uTW9kZSI6ImRlZmF1bHQiLCJ0cmFjZUlkIjoidHJhY2U6c2lnbmFsIn19"
+            }
+          ]
+        },
+        "scheduleToCloseTimeout": {
+          "seconds": "315360000"
+        },
+        "scheduleToStartTimeout": {
+          "seconds": "315360000"
+        },
+        "startToCloseTimeout": {
+          "seconds": "60"
+        },
+        "heartbeatTimeout": {},
+        "workflowTaskCompletedEventId": "9",
+        "retryPolicy": {
+          "initialInterval": {
+            "seconds": "1"
+          },
+          "backoffCoefficient": 2,
+          "maximumInterval": {
+            "seconds": "100"
+          },
+          "maximumAttempts": 5
+        }
+      }
+    },
+    {
+      "eventId": "12",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 487000000
+      },
+      "eventType": 11,
+      "activityTaskStartedEventAttributes": {
+        "scheduledEventId": "11",
+        "identity": "synthetic-worker",
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "13",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 488000000
+      },
+      "eventType": 12,
+      "activityTaskCompletedEventAttributes": {
+        "result": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "IlJVTiI="
+            }
+          ]
+        },
+        "scheduledEventId": "11",
+        "startedEventId": "12",
+        "identity": "synthetic-worker"
+      }
+    },
+    {
+      "eventId": "14",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 488000000
+      },
+      "eventType": 5,
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "sandbox-main",
+          "kind": 1
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "15",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 488000000
+      },
+      "eventType": 6,
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "14",
+        "identity": "synthetic-worker",
+        "historySizeBytes": "1971"
+      }
+    },
+    {
+      "eventId": "16",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 492000000
+      },
+      "eventType": 7,
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "14",
+        "identity": "synthetic-worker",
+        "binaryChecksum": "@temporalio/worker@1.24.0+ce48a8a55549c56b2d0e999ceca2be5976d7b55c2fd861ce4eff20cd6ae42cb3",
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "17",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 492000000
+      },
+      "eventType": 29,
+      "startChildWorkflowExecutionInitiatedEventAttributes": {
+        "namespace": "default",
+        "workflowId": "workflow:codex-app-server:room:synthetic:pane:synthetic:trace:signal",
+        "workflowType": {
+          "name": "codexAppServerTurnWorkflow"
+        },
+        "taskQueue": {
+          "name": "sandbox-main",
+          "kind": 1
+        },
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJyb29tSWQiOiJyb29tOnN5bnRoZXRpYyIsInBhbmVJZCI6InBhbmU6c3ludGhldGljIiwicHJvbXB0IjoiU3ludGhldGljIHJlcXVlc3QiLCJhcnRpZmFjdElkcyI6W10sImFnZW50UnVuSWQiOiJhZ2VudF9ydW46c2lnbmFsIiwicGVybWlzc2lvbk1vZGUiOm51bGwsImNvbGxhYm9yYXRpb25Nb2RlIjoiZGVmYXVsdCIsInRyYWNlSWQiOiJ0cmFjZTpzaWduYWwifQ=="
+            }
+          ]
+        },
+        "workflowExecutionTimeout": {},
+        "workflowRunTimeout": {},
+        "workflowTaskTimeout": {
+          "seconds": "10"
+        },
+        "workflowTaskCompletedEventId": "15",
+        "header": {},
+        "memo": {}
+      }
+    },
+    {
+      "eventId": "18",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 492000000
+      },
+      "eventType": 31,
+      "childWorkflowExecutionStartedEventAttributes": {
+        "namespace": "default",
+        "initiatedEventId": "17",
+        "workflowExecution": {
+          "workflowId": "workflow:codex-app-server:room:synthetic:pane:synthetic:trace:signal",
+          "runId": "ca528478-2b01-40b4-b222-34951415dcb8"
+        },
+        "workflowType": {
+          "name": "codexAppServerTurnWorkflow"
+        }
+      }
+    },
+    {
+      "eventId": "19",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 492000000
+      },
+      "eventType": 5,
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "sandbox-main",
+          "kind": 1
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "20",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 492000000
+      },
+      "eventType": 6,
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "19",
+        "identity": "synthetic-worker",
+        "historySizeBytes": "2766"
+      }
+    },
+    {
+      "eventId": "21",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 638000000
+      },
+      "eventType": 7,
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "19",
+        "identity": "synthetic-worker",
+        "binaryChecksum": "@temporalio/worker@1.24.0+ce48a8a55549c56b2d0e999ceca2be5976d7b55c2fd861ce4eff20cd6ae42cb3",
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "22",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 647000000
+      },
+      "eventType": 32,
+      "childWorkflowExecutionCompletedEventAttributes": {
+        "result": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJzdGF0dXMiOiJDT01QTEVURUQiLCJtZXNzYWdlIjoiU3ludGhldGljIHJlc3VsdCIsInJvb21BZ2VudE91dGNvbWUiOnsic3RhdHVzIjoiVkVSSUZJRUQiLCJzdGF0dXNSZWFzb24iOiJTeW50aGV0aWMgdmVyaWZpY2F0aW9uIiwiZXhlY3V0ZWRBY3Rpb25Db3VudCI6MX19"
+            }
+          ]
+        },
+        "namespace": "default",
+        "workflowExecution": {
+          "workflowId": "workflow:codex-app-server:room:synthetic:pane:synthetic:trace:signal",
+          "runId": "ca528478-2b01-40b4-b222-34951415dcb8"
+        },
+        "workflowType": {
+          "name": "codexAppServerTurnWorkflow"
+        },
+        "initiatedEventId": "17",
+        "startedEventId": "18"
+      }
+    },
+    {
+      "eventId": "23",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 647000000
+      },
+      "eventType": 5,
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "sandbox-main",
+          "kind": 1
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "24",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 647000000
+      },
+      "eventType": 6,
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "23",
+        "identity": "synthetic-worker",
+        "historySizeBytes": "3347"
+      }
+    },
+    {
+      "eventId": "25",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 647000000
+      },
+      "eventType": 7,
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "23",
+        "identity": "synthetic-worker",
+        "binaryChecksum": "@temporalio/worker@1.24.0+ce48a8a55549c56b2d0e999ceca2be5976d7b55c2fd861ce4eff20cd6ae42cb3",
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "26",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 647000000
+      },
+      "eventType": 10,
+      "activityTaskScheduledEventAttributes": {
+        "activityId": "2",
+        "activityType": {
+          "name": "finishRoomAgentSupervisorTurn"
+        },
+        "taskQueue": {
+          "name": "sandbox-main",
+          "kind": 1
+        },
+        "header": {},
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJpdGVtIjp7Im1pc3Npb25JZCI6Im1pc3Npb246c2lnbmFsIiwidHVybiI6eyJyb29tSWQiOiJyb29tOnN5bnRoZXRpYyIsInBhbmVJZCI6InBhbmU6c3ludGhldGljIiwicHJvbXB0IjoiU3ludGhldGljIHJlcXVlc3QiLCJhcnRpZmFjdElkcyI6W10sImFnZW50UnVuSWQiOiJhZ2VudF9ydW46c2lnbmFsIiwicGVybWlzc2lvbk1vZGUiOm51bGwsImNvbGxhYm9yYXRpb25Nb2RlIjoiZGVmYXVsdCIsInRyYWNlSWQiOiJ0cmFjZTpzaWduYWwifX0sInN0YXR1cyI6IkNPTVBMRVRFRCIsInN0YXR1c1JlYXNvbiI6IlN5bnRoZXRpYyB2ZXJpZmljYXRpb24ifQ=="
+            }
+          ]
+        },
+        "scheduleToCloseTimeout": {
+          "seconds": "315360000"
+        },
+        "scheduleToStartTimeout": {
+          "seconds": "315360000"
+        },
+        "startToCloseTimeout": {
+          "seconds": "60"
+        },
+        "heartbeatTimeout": {},
+        "workflowTaskCompletedEventId": "24",
+        "retryPolicy": {
+          "initialInterval": {
+            "seconds": "1"
+          },
+          "backoffCoefficient": 2,
+          "maximumInterval": {
+            "seconds": "100"
+          },
+          "maximumAttempts": 5
+        }
+      }
+    },
+    {
+      "eventId": "27",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 647000000
+      },
+      "eventType": 11,
+      "activityTaskStartedEventAttributes": {
+        "scheduledEventId": "26",
+        "identity": "synthetic-worker",
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "28",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 647000000
+      },
+      "eventType": 12,
+      "activityTaskCompletedEventAttributes": {
+        "result": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "YmluYXJ5L251bGw="
+              }
+            }
+          ]
+        },
+        "scheduledEventId": "26",
+        "startedEventId": "27",
+        "identity": "synthetic-worker"
+      }
+    },
+    {
+      "eventId": "29",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 647000000
+      },
+      "eventType": 5,
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "sandbox-main",
+          "kind": 1
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "30",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 647000000
+      },
+      "eventType": 6,
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "29",
+        "identity": "synthetic-worker",
+        "historySizeBytes": "4144"
+      }
+    },
+    {
+      "eventId": "31",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 647000000
+      },
+      "eventType": 7,
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "29",
+        "identity": "synthetic-worker",
+        "binaryChecksum": "@temporalio/worker@1.24.0+ce48a8a55549c56b2d0e999ceca2be5976d7b55c2fd861ce4eff20cd6ae42cb3",
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "32",
+      "eventTime": {
+        "seconds": "4946684614",
+        "nanos": 670000000
+      },
+      "eventType": 27,
+      "workflowExecutionTerminatedEventAttributes": {
+        "reason": "Synthetic test finished",
+        "details": {},
+        "identity": "synthetic-worker"
+      }
+    }
+  ]
+}
